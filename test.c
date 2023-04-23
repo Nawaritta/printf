@@ -14,7 +14,7 @@ int main()
 	count = _printf("single character C %c\n", c);
 	printf("Printed %d characters.\n", count);
 
-	_printf("testing double percentage %% ");
+	_printf("testing multiple  percentage %%% more percent signe %%\n ");
 	printf("Printed %d characters.\n", count);
 
 	return 0;

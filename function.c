@@ -1,12 +1,13 @@
 #include "main.h"
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * print_buffer - prints the buffer
+ * @buffer: buf to print
+ * @buf_index: index of the element in the buff
  */
-int _putchar(char c)
+void print_buffer(char buffer[], int *buf_index)
 {
-	return (write(1, &c, 1));
+	if (*buf_index > 0)
+		write(1, &buffer[0], *buf_index);
+
+	*buf_index = 0;
 }

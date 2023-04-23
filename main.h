@@ -1,9 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
-
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
+#define BUFFER_SIZE 1024
 int _printf(const char *format, ...);
-int _putchar(char c);
+void print_buffer(char *buffer, int *buf_index);
 #endif

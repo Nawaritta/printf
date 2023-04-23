@@ -1,0 +1,18 @@
+#include "main.h"
+int main()
+{
+	int count = _printf("this should print a string\n");
+	char *name = "Nora B";
+	char c = 'N';
+
+
+	count = _printf("My name is %s!\n", name);
+	count = _printf("single character C %c\n", c);
+
+	printf("Printed %d characters.\n", count);
+
+	_printf("testing double percentage %% ");
+	printf("Printed %d characters.\n", count);
+
+	return 0;
+}

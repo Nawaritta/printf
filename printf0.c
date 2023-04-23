@@ -7,10 +7,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int buf_index = 0;
-	int  count = 0;
-	char c, buffer[BUFFER_SIZE];
-	char *s;
+	int buf_index = 0, count = 0;
+	char c, buffer[BUFFER_SIZE], *s;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -21,29 +19,34 @@ int _printf(const char *format, ...)
 		{	format++;
 			if (*format == 'c')
 			{	c = va_arg(args, int);
-				buffer[buf_index++] = c;
-				count++; }
+				buffer[buf_index++] = c; }
 			if (*format == 's')
-			{	s = va_arg(args, char *);
+			{
+				if (va_arg(args, char *) == NULL)
+					return (-1);
+				s = va_arg(args, char *);
 				while (*s != '\0')
-				{	buffer[buf_index++] = *s++;
-					count++; }
+					buffer[buf_index++] = *s++;
 			}
 			if (*format == '%')
-			{	buffer[buf_index++] = '%';
-				count++; }
+				buffer[buf_index++] = '%';
 		} else
-		{	buffer[buf_index++] = *format;
-			count++; }
+			buffer[buf_index++] = *format;
 		format++;
 		if (buf_index == BUFFER_SIZE)
 		{
+			count += buf_index;
+			if (format[buf_index] == '%')
+				buf_index--;
 			print_buffer(buffer, &buf_index);
-			buf_index = 0;
 		}
 	}
 	if (buf_index > 0)
-		print_buffer(buffer, &buf_index);
+	{
+		count += buf_index;
+		if (format[buf_index] == '%')
+			buf_index--;
+		print_buffer(buffer, &buf_index); }
 	va_end(args);
 	return (count);
 }

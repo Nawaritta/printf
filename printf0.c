@@ -7,43 +7,55 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int buf_index = 0, count = 0;
-	char c, buffer[BUFFER_SIZE], *s;
+	int i = 0, count = 0, buf_index = 0;
+	char c, *s, buffer[BUFFER_SIZE];
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	while (*format != '\0')
+	while (format[i] != '\0')
 	{
-		if (*format == '%')
-		{format++;
-			if (*format == 'c')
-			{c = va_arg(args, int);
-				buffer[buf_index++] = c;
-				count++; }
-			if (*format == 's')
+		if (format[i] == '%')
+		{
+			print_buffer(buffer, &buf_index);
+			i++;
+			switch (format[i])
 			{
-				if (va_arg(args, char *) == NULL)
-					return (-1);
+			case 'c':
+				c = va_arg(args, int);
+				buffer[buf_index++] = c;
+				count++;
+				break;
+			case 's':
 				s = va_arg(args, char *);
 				while (*s != '\0')
-				{buffer[buf_index++] = *s;
+				{
+					buffer[buf_index++] = *s;
+					count++;
 					s++;
-					count++; }
+					if (buf_index == BUFFER_SIZE)
+						print_buffer(buffer, &buf_index);
+				}
+				break;
+			case '%':
+				buffer[buf_index++] = '%';
+				count++;
+				break;
+			default:
+				va_end(args);
+				return (-1);
 			}
-			if (*format == '%')
-			{buffer[buf_index++] = '%';
-				count++; }
 		} else
-		{buffer[buf_index++] = *format;
-			count++; }
-		format++;
-		if (buf_index == BUFFER_SIZE)
-		{	print_buffer(buffer, &buf_index);
-			buf_index = 0;	}
+		{
+			buffer[buf_index++] = format[i];
+			count++;
+			if (buf_index == BUFFER_SIZE)
+				print_buffer(buffer, &buf_index);
+		}
+		i++;
 	}
-	if (buf_index > 0)
-		print_buffer(buffer, &buf_index);
+	print_buffer(buffer, &buf_index);
 	va_end(args);
 	return (count);
 }
+

@@ -6,4 +6,5 @@
 #define BUFFER_SIZE 1024
 int _printf(const char *format, ...);
 void print_buffer(char *buffer, int *buf_index);
+int _putchar(char c);
 #endif

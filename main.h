@@ -24,6 +24,7 @@
  * @start: A pointer to the start of buffer.
  * @len: The length of the string stored in buffer.
  */
+
 typedef struct buffer_s
 {
 	char *buffer;
@@ -33,14 +34,15 @@ typedef struct buffer_s
 
 /**
  * struct converter_s - A new type defining a converter struct.
- * @specifier: A character representing a conversion specifier.
- * @func: A pointer to a conversion function corresponding to specifier.
+ * @converter: A character representing a converter.
+ * @value: A integer value converted
  */
+
 typedef struct converter_s
 {
-	unsigned char specifier;
-	unsigned int (*func)(va_list, buffer_t *,
-			     unsigned char, int, int, unsigned char);
+	unsigned char converter;
+	unsigned int value;
+
 } converter_t;
 
 /**
@@ -91,7 +93,21 @@ unsigned char handle_flags(const char *flags, char *index);
 unsigned char handle_length(const char *modifier, char *index);
 int handle_width(va_list args, const char *modifier, char *index);
 int handle_precision(va_list args, const char *modifier, char *index);
-unsigned int handle_specifiers(const char *modifier)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
+
+/**
+ * handle_specifiers - A new type defining a matching specification.
+ * @char: character modifier
+ * @int: integer modifier
+ * Return: null
+ */
+
+unsigned int (*handle_specifiers(const char *modifier))(va_list, buffer_t *,
+unsigned char, int, int, unsigned char)
+{
+	unsigned char modifier;
+	unsigned int (*func)(va_list, buffer_t *,
+			unsigned char, int, int, unsigned char);
+}
 
 /* Modifiers */
 

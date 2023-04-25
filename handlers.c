@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * handle_flags - Matches flags with corresponding values.
  * @flag: A pointer to a potential string of flags.
@@ -151,18 +150,18 @@ int handle_precision(va_list args, const char *modifier, char *index)
 }
 
 /**
- *handle_specifiers - Matches a conversion specifier with a conversion function.
- * @specifier: A pointer to a potential conversion specifier.
- *
- * Description: This function pointer takes a format specifier character and returns
- * a pointer to a function that handles the specifier. The returned function takes a
- * va_list, a buffer_t pointer, and various other parameters, and returns an unsigned int
- *
- * Return: If a conversion function is matched - a pointer to the function.
- *         Otherwise - NULL.
+ *handle_specifiers - This function pointer takes a format specifier character
+ *and returns a pointer to a function that handles the specifier.
+ *specifier: A pointer to a potential conversion specifier.
+ *@b: param 2
+ *@c: param 3
+ *@d: param 4
+ *@e: param 5
+ *@f: param 6
+ * Return: a pointer to the function or NULL.
  */
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
-							 unsigned char, int, int, unsigned char)
+unsigned int (*handle_specifiers(const char *specifier))(va_list,
+							 buffer_t *b, unsigned char f, int e, int d, unsigned char c)
 {
 	int i;
 	converter_t converters[] = {

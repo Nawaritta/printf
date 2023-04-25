@@ -35,13 +35,18 @@ typedef struct buffer_s
  * struct converter_s - A new type defining a converter struct.
  * @specifier: A character representing a conversion specifier.
  * @func: A pointer to a conversion function corresponding to specifier.
+ * Return: the number of characters added to the buffer, or -1 on failure.
  */
+
 typedef struct converter_s
 {
 	unsigned char specifier;
-	unsigned int (*func)(va_list, buffer_t *,
-			     unsigned char, int, int, unsigned char);
+
+	unsigned int (*func)(va_list args, buffer_t *buffer,
+			     unsigned char flags, int width, int precision,
+			     unsigned char length);
 } converter_t;
+
 
 /**
  * struct flag_s - A new type defining a flags struct.
@@ -54,7 +59,22 @@ typedef struct flag_s
 	unsigned char value;
 } flag_t;
 
+/**
+*handle_specifiers - This function pointer takes a format specifier character
+*and returns a pointer to a function that handles the specifier.
+* takes a pointer to a potential conversion specifier.
+*@b: param 2
+*@c: param 3
+*@d: param 4
+*@e: param 5
+*@f: param 6
+* Return: a pointer to the function or NULL.
+*/
+unsigned int (*handle_specifiers(const char *specifier))(va_list,
+							 buffer_t *b, unsigned char f, int e, int d, unsigned char c);
+
 int _printf(const char *format, ...);
+
 unsigned int convert_c(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_s(va_list args, buffer_t *output,
@@ -85,8 +105,7 @@ unsigned char handle_flags(const char *flags, char *index);
 unsigned char handle_length(const char *modifier, char *index);
 int handle_width(va_list args, const char *modifier, char *index);
 int handle_precision(va_list args, const char *modifier, char *index);
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
-							 unsigned char, int, int, unsigned char);
+
 unsigned int print_width(buffer_t *output, unsigned int printed,
 			 unsigned char flags, int wid);
 unsigned int print_string_width(buffer_t *output,

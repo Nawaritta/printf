@@ -1,5 +1,5 @@
 #include "main.h"
-unsigned int handle_specifiers(const char *format)(va_list, buffer_t *);
+unsigned int handle_specifiers(const char *modifier)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
 
 
 /**

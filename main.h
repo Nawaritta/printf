@@ -1,7 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n);
 void free_buffer(buffer_t *output);

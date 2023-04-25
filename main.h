@@ -55,6 +55,9 @@ typedef struct flag_s
 } flag_t;
 
 int _printf(const char *format, ...);
+
+/* Conversion Specifier Functions */
+
 unsigned int convert_c(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_s(va_list args, buffer_t *output,
@@ -81,24 +84,26 @@ unsigned int convert_r(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_R(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
+
+/* Handlers */
+
 unsigned char handle_flags(const char *flags, char *index);
 unsigned char handle_length(const char *modifier, char *index);
 int handle_width(va_list args, const char *modifier, char *index);
 int handle_precision(va_list args, const char *modifier, char *index);
-<<<<<<< HEAD
-unsigned int (*handle_specifiers(const char *format))(va_list, buffer_t *);
+unsigned int handle_specifiers(const char *modifier)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
 
 /* Modifiers */
-=======
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
-							 unsigned char, int, int, unsigned char);
->>>>>>> 2e4d967d95f7979449e37f9a09d6afc63ddb24c1
+
 unsigned int print_width(buffer_t *output, unsigned int printed,
 			 unsigned char flags, int wid);
 unsigned int print_string_width(buffer_t *output,
 				unsigned char flags, int wid, int prec, int size);
 unsigned int print_neg_width(buffer_t *output, unsigned int printed,
 			     unsigned char flags, int wid);
+
+/* Helper Functions */
+
 buffer_t *init_buffer(void);
 void free_buffer(buffer_t *output);
 unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n);

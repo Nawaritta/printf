@@ -25,7 +25,7 @@ unsigned int print_width(buffer_t *output, unsigned int printed,
 }
 
 /**
- * print_string_width - contains the leading spaces to a buff for a width modifier.
+ * print_string_width - contains the leading spaces to a buff for a width mod
  * @output: pointer to the buff.
  * @flags: Flag modifiers.
  * @wid: A width modifier.

@@ -18,6 +18,9 @@
 #define SHORT 1
 #define LONG 2
 
+typedef unsigned int unsint;
+
+
 /**
  * struct buffer_s - A new type defining a buffer struct.
  * @buffer: A pointer to a character array.
@@ -35,6 +38,9 @@ typedef struct buffer_s
  * struct converter_s - A new type defining a converter struct.
  * @specifier: A character representing a conversion specifier.
  * @func: A pointer to a conversion function corresponding to specifier.
+ * Description: This struct defines a converter, which associates a conversion
+ * specifier with a function that can perform the conversion.
+ * The function takes a va_list of arguments.
  * Return: the number of characters added to the buffer, or -1 on failure.
  */
 
@@ -42,7 +48,7 @@ typedef struct converter_s
 {
 	unsigned char specifier;
 
-	unsigned int (*func)(va_list args, buffer_t *buffer,
+	unsint (*func)(va_list args, buffer_t *buffer,
 			     unsigned char flags, int width, int precision,
 			     unsigned char length);
 } converter_t;

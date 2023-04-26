@@ -17,6 +17,9 @@
 #define NEG_FLAG ((flags >> 4) & 1)
 #define SHORT 1
 #define LONG 2
+#define UNUSED(x) (void)(x)
+#define BUFF_SIZE 1024
+
 
 typedef unsigned int unsint;
 

@@ -107,6 +107,18 @@ unsigned int convert_r(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
 unsigned int convert_R(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
+
+int write_number(int is_negative, int ind, char buffer[],
+	int flags, int width, int precision, int size);
+int write_num(int ind, char buffer[],
+	int flags, int width, int prec,
+	int length, char padd, char extra_c);
+int write_unsgnd(int is_negative, int ind,
+	char buffer[],
+	int flags, int width, int precision, int size);
+nt write_pointer(char buffer[], int ind, int length,
+	int width, int flags, char padd, char extra_c, int padd_start);
+
 unsigned char handle_flags(const char *flags, char *index);
 unsigned char handle_length(const char *modifier, char *index);
 int handle_width(va_list args, const char *modifier, char *index);

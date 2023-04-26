@@ -118,6 +118,9 @@ int write_unsgnd(int is_negative, int ind,
 	int flags, int width, int precision, int size);
 nt write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
+int handle_write_char(char c, char buffer[],
+	int flags, int width, int precision, int size)
+
 
 unsigned char handle_flags(const char *flags, char *index);
 unsigned char handle_length(const char *modifier, char *index);

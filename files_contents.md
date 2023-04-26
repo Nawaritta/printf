@@ -37,52 +37,65 @@
 
 * handle_precision - Matches a precision modifier with its corresponding value.
 
-*handle_specifiers - This function pointer takes a format specifier character and returns a pointer to a function that handles the specifier.
+* handle_specifiers - This function pointer takes a format specifier character
+  and returns a pointer to a function that handles the specifier.
 
 
 #convert_strings.c
 
-* convert_s - Converts an argument to a string and stores it to a buffer contained in a struct.
+* convert_s - Converts an argument to a string and stores it to a buffer
+  contained in a struct.
 
-* convert_S - Converts an argument to a string and stores it to a buffer contained in a struct.
+* convert_S - Converts an argument to a string and stores it to a buffer
+  contained in a struct.
 
 * convert_r - Reverses a string and stores it to a buffer contained in a struct.
 
-* convert_R - Converts a string to ROT13 and stores it to a buffer contained in a struct.
+* convert_R - Converts a string to ROT13 and stores it to a buffer contained in
+  a struct.
 
 
 #convert_numbers.c
 
-* convert_di - Converts an argument to a signed int and stores it to a buffer contained in a struct.
+* convert_di - Converts an argument to a signed int and stores it to a buffer
+  contained in a struct.
 
-* convert_b - Converts an unsigned int argument to binary and stores it to a buffer contained in a struct.
+* convert_b - Converts an unsigned int argument to binary and stores it to a
+  buffer contained in a struct.
 
-*convert_o - Converts an unsigned int to octal and stores it to a buffer contained in a struct.
+*convert_o - Converts an unsigned int to octal and stores it to a buffer
+ contained in a struct.
 
-* convert_u - Converts an unsigned int argument to decimal and stores it to a buffer contained in a struct.
+* convert_u - Converts an unsigned int argument to decimal and stores it to
+  a buffer contained in a struct.
 
 
 #base_converters.c
 
 * convert_sbase - Converts a signed long to an inputted base and stores
 
-* convert_ubase - Converts an unsigned long to an inputted base and stores the result to a buffer contained in a struct.
+* convert_ubase - Converts an unsigned long to an inputted base and stores
+ the result to a buffer contained in a struct.
 
 
 
 #convert_c_percent.c
 
 
-* convert_c - Converts an argument to an unsigned char and stores it to a buffer contained in a struct.
+* convert_c - Converts an argument to an unsigned char and stores it to a buffer
+  contained in a struct.
 
 * convert_percent - Stores a percent sign to a buffer contained in a struct.
 
-* convert_p - Converts the address of an argument to hex and stores it to a buffer contained in a struct.
+* convert_p - Converts the address of an argument to hex and stores it to a
+  buffer contained in a struct.
 
 
 #convert_hex.c
 
 
-* convert_x - Converts an unsigned int argument to hex using abcdef and stores it to a buffer contained in a struct.
+* convert_x - Converts an unsigned int argument to hex using abcdef and stores
+ it to a buffer contained in a struct.
 
-* convert_X - Converts an unsigned int argument to hex using ABCDEF and stores it to a buffer contained in a struct.
+* convert_X - Converts an unsigned int argument to hex using ABCDEF and stores
+ it to a buffer contained in a struct.

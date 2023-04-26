@@ -109,17 +109,17 @@ unsigned int convert_R(va_list args, buffer_t *output,
 		       unsigned char flags, int wid, int prec, unsigned char len);
 
 int write_number(int is_negative, int ind, char buffer[],
-	int flags, int width, int precision, int size);
+	int flags, int width, int precision, int length);
 int write_num(int ind, char buffer[],
 	int flags, int width, int prec,
 	int length, char padd, char extra_c);
 int write_unsgnd(int is_negative, int ind,
 	char buffer[],
-	int flags, int width, int precision, int size);
+	int flags, int width, int precision, int length);
 nt write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 int handle_write_char(char c, char buffer[],
-	int flags, int width, int precision, int size)
+	int flags, int width, int precision, int length)
 
 
 unsigned char handle_flags(const char *flags, char *index);
